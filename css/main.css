@@ -2401,7 +2401,7 @@ ul.breadcrumb li:last-child {
 .tag-cloud a {
   display: inline-block;
   margin: 10px;
-  font-size: 16px;
+  font-size: 16px !important;
 }
 .tag-cloud-0 {
   border-bottom-color: #aaa;
