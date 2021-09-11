@@ -42,11 +42,11 @@
   </entry>
   
   <entry>
-    <title>docker命令</title>
+    <title>阿里云docker部署kafka</title>
     <link href="https://zhoubh.xyz/2021/09/11/%E9%98%BF%E9%87%8C%E4%BA%91docker%E9%83%A8%E7%BD%B2kafka/"/>
     <id>https://zhoubh.xyz/2021/09/11/%E9%98%BF%E9%87%8C%E4%BA%91docker%E9%83%A8%E7%BD%B2kafka/</id>
-    <published>2021-09-11T14:03:56.000Z</published>
-    <updated>2021-09-11T15:32:46.518Z</updated>
+    <published>2021-09-11T13:33:17.000Z</published>
+    <updated>2021-09-11T15:39:08.912Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;code&gt;本文基础建立在有一台阿里云服务器，以及服务器已经安装了docker的基础上。&lt;/code&gt;&lt;/p&gt;
@@ -57,10 +57,12 @@
     
     <category term="教程" scheme="https://zhoubh.xyz/categories/%E6%95%99%E7%A8%8B/"/>
     
-    <category term="docker" scheme="https://zhoubh.xyz/categories/%E6%95%99%E7%A8%8B/docker/"/>
-    
     
     <category term="docker" scheme="https://zhoubh.xyz/tags/docker/"/>
+    
+    <category term="阿里云" scheme="https://zhoubh.xyz/tags/%E9%98%BF%E9%87%8C%E4%BA%91/"/>
+    
+    <category term="kafka" scheme="https://zhoubh.xyz/tags/kafka/"/>
     
   </entry>
   
