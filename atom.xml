@@ -6,7 +6,7 @@
   <link href="https://zhoubh.xyz/atom.xml" rel="self"/>
   
   <link href="https://zhoubh.xyz/"/>
-  <updated>2021-09-11T15:12:17.744Z</updated>
+  <updated>2021-09-11T15:32:55.353Z</updated>
   <id>https://zhoubh.xyz/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://zhoubh.xyz/2021/09/11/docker%E5%91%BD%E4%BB%A4/"/>
     <id>https://zhoubh.xyz/2021/09/11/docker%E5%91%BD%E4%BB%A4/</id>
     <published>2021-09-11T14:03:56.000Z</published>
-    <updated>2021-09-11T15:12:17.744Z</updated>
+    <updated>2021-09-11T15:32:55.353Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;code&gt;本文主要介绍常用命令&lt;/code&gt;&lt;/p&gt;
@@ -42,11 +42,34 @@
   </entry>
   
   <entry>
+    <title>docker命令</title>
+    <link href="https://zhoubh.xyz/2021/09/11/%E9%98%BF%E9%87%8C%E4%BA%91docker%E9%83%A8%E7%BD%B2kafka/"/>
+    <id>https://zhoubh.xyz/2021/09/11/%E9%98%BF%E9%87%8C%E4%BA%91docker%E9%83%A8%E7%BD%B2kafka/</id>
+    <published>2021-09-11T14:03:56.000Z</published>
+    <updated>2021-09-11T15:32:46.518Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;code&gt;本文基础建立在有一台阿里云服务器，以及服务器已经安装了docker的基础上。&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;被折磨了一段时间，本地始终访问不到阿里云docker里面的kafka，故写下记录,顺便吐槽一句，阿里云运行docker中的kafka时，不知道为什么kafka的内存占用非常高，搞得服务器都要宕机了(可能因为我用的免费的-.-)。 &lt;/p&gt;
+&lt;h2 id=&quot;docker命令&quot;&gt;&lt;a href=&quot;#docker命令&quot; class=&quot;headerlink&quot; title=&quot;docker命令&quot;&gt;&lt;/a&gt;docker命令&lt;/h2&gt;&lt;p&gt;详情可以看这篇文章&lt;a href=&quot;https://zhoubh.xyz/2021/09/11/docker命令/&quot; target=&quot;_blank&quot;&gt;docker命令&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="教程" scheme="https://zhoubh.xyz/categories/%E6%95%99%E7%A8%8B/"/>
+    
+    <category term="docker" scheme="https://zhoubh.xyz/categories/%E6%95%99%E7%A8%8B/docker/"/>
+    
+    
+    <category term="docker" scheme="https://zhoubh.xyz/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hello World</title>
     <link href="https://zhoubh.xyz/2021/08/28/abc/"/>
     <id>https://zhoubh.xyz/2021/08/28/abc/</id>
     <published>2021-08-28T10:28:39.223Z</published>
-    <updated>2021-09-01T16:08:01.170Z</updated>
+    <updated>2021-09-11T15:32:53.795Z</updated>
     
     
     <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
@@ -62,24 +85,6 @@
     <category term="hexo" scheme="https://zhoubh.xyz/tags/hexo/"/>
     
     <category term="test" scheme="https://zhoubh.xyz/tags/test/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://zhoubh.xyz/2021/08/28/hello-world/"/>
-    <id>https://zhoubh.xyz/2021/08/28/hello-world/</id>
-    <published>2021-08-28T08:44:07.516Z</published>
-    <updated>2021-09-11T15:09:45.961Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&amp;quot;acc&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/writing.html&quot;&gt;Writing&lt;/a&gt;&lt;/p&gt;</summary>
-    
-    
-    
     
   </entry>
   
