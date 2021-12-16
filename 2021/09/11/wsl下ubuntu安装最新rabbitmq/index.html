@@ -22,32 +22,31 @@
   <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"zhoubh.xyz","root":"/","images":"/images","scheme":"Gemini","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="本文基础建立在有一台阿里云服务器，以及服务器已经安装了docker的基础上。 被折磨了一段时间，本地始终访问不到阿里云docker里面的kafka，故写下记录,顺便吐槽一句，阿里云运行docker中的kafka时，不知道为什么kafka的内存占用非常高，搞得服务器都要宕机了(可能因为我用的免费的-.-)。  docker命令详情可以看这篇文章docker命令">
+<meta name="description" content="写在开头之所以不能直接apt-get install,是因为这样安装的rabbitmq和erlang的版本都很低。 如果无所谓的话，可以直接 123sudo apt-get install erlang-noxsudo apt-get updatesudo apt-get install rabbitmq-server">
 <meta property="og:type" content="article">
-<meta property="og:title" content="阿里云docker部署kafka">
-<meta property="og:url" content="https://zhoubh.xyz/2021/09/11/%E9%98%BF%E9%87%8C%E4%BA%91docker%E9%83%A8%E7%BD%B2kafka/index.html">
+<meta property="og:title" content="wsl下ubuntu安装最新rabbitmq">
+<meta property="og:url" content="https://zhoubh.xyz/2021/09/11/wsl%E4%B8%8Bubuntu%E5%AE%89%E8%A3%85%E6%9C%80%E6%96%B0rabbitmq/index.html">
 <meta property="og:site_name" content="funny">
-<meta property="og:description" content="本文基础建立在有一台阿里云服务器，以及服务器已经安装了docker的基础上。 被折磨了一段时间，本地始终访问不到阿里云docker里面的kafka，故写下记录,顺便吐槽一句，阿里云运行docker中的kafka时，不知道为什么kafka的内存占用非常高，搞得服务器都要宕机了(可能因为我用的免费的-.-)。  docker命令详情可以看这篇文章docker命令">
+<meta property="og:description" content="写在开头之所以不能直接apt-get install,是因为这样安装的rabbitmq和erlang的版本都很低。 如果无所谓的话，可以直接 123sudo apt-get install erlang-noxsudo apt-get updatesudo apt-get install rabbitmq-server">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://zhoubh.xyz/2021/09/11/%E9%98%BF%E9%87%8C%E4%BA%91docker%E9%83%A8%E7%BD%B2kafka/image-20210911224744117.png">
-<meta property="article:published_time" content="2021-09-11T13:33:17.000Z">
-<meta property="article:modified_time" content="2021-12-16T11:29:01.009Z">
+<meta property="og:image" content="https://zhoubh.xyz/2021/09/11/wsl%E4%B8%8Bubuntu%E5%AE%89%E8%A3%85%E6%9C%80%E6%96%B0rabbitmq/image-20211216165423322.png">
+<meta property="og:image" content="https://zhoubh.xyz/2021/09/11/images/wsl%E4%B8%8Bubuntu%E5%AE%89%E8%A3%85%E6%9C%80%E6%96%B0rabbitmq/image-20211216170442344.png">
+<meta property="article:published_time" content="2021-09-11T14:03:56.000Z">
+<meta property="article:modified_time" content="2021-12-16T11:29:19.381Z">
 <meta property="article:author" content="2funny">
-<meta property="article:tag" content="docker">
-<meta property="article:tag" content="阿里云">
-<meta property="article:tag" content="kafka">
+<meta property="article:tag" content="rabbitmq">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://zhoubh.xyz/2021/09/11/%E9%98%BF%E9%87%8C%E4%BA%91docker%E9%83%A8%E7%BD%B2kafka/image-20210911224744117.png">
+<meta name="twitter:image" content="https://zhoubh.xyz/2021/09/11/wsl%E4%B8%8Bubuntu%E5%AE%89%E8%A3%85%E6%9C%80%E6%96%B0rabbitmq/image-20211216165423322.png">
 
 
-<link rel="canonical" href="https://zhoubh.xyz/2021/09/11/%E9%98%BF%E9%87%8C%E4%BA%91docker%E9%83%A8%E7%BD%B2kafka/">
+<link rel="canonical" href="https://zhoubh.xyz/2021/09/11/wsl%E4%B8%8Bubuntu%E5%AE%89%E8%A3%85%E6%9C%80%E6%96%B0rabbitmq/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zhoubh.xyz/2021/09/11/%E9%98%BF%E9%87%8C%E4%BA%91docker%E9%83%A8%E7%BD%B2kafka/","path":"2021/09/11/阿里云docker部署kafka/","title":"阿里云docker部署kafka"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zhoubh.xyz/2021/09/11/wsl%E4%B8%8Bubuntu%E5%AE%89%E8%A3%85%E6%9C%80%E6%96%B0rabbitmq/","path":"2021/09/11/wsl下ubuntu安装最新rabbitmq/","title":"wsl下ubuntu安装最新rabbitmq"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>阿里云docker部署kafka | funny</title>
+<title>wsl下ubuntu安装最新rabbitmq | funny</title>
   
 
 
@@ -155,7 +154,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#docker%E5%91%BD%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">docker命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85zookeeper%E5%92%8Ckafka"><span class="nav-number">2.</span> <span class="nav-text">安装zookeeper和kafka</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E9%98%BF%E9%87%8C%E4%BA%91%E5%AE%89%E5%85%A8%E7%BB%84"><span class="nav-number">3.</span> <span class="nav-text">配置阿里云安全组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95"><span class="nav-number">4.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E6%B5%8B%E8%AF%95"><span class="nav-number">5.</span> <span class="nav-text">本地测试</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E5%BC%80%E5%A4%B4"><span class="nav-number">1.</span> <span class="nav-text">写在开头</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%98%E7%BD%91%E4%B8%8B%E8%BD%BD%E5%92%8C%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">官网下载和安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%99%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%AD%98%E5%82%A8%E5%BA%93"><span class="nav-number">3.1.</span> <span class="nav-text">配置存储库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">3.2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE"><span class="nav-number">3.3.</span> <span class="nav-text">简单配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96%E7%AE%A1%E7%90%86%E7%95%8C%E9%9D%A2%E6%8F%92%E4%BB%B6"><span class="nav-number">3.4.</span> <span class="nav-text">可视化管理界面插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E5%91%BD%E4%BB%A4"><span class="nav-number">3.5.</span> <span class="nav-text">简单命令</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -236,7 +235,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zhoubh.xyz/2021/09/11/%E9%98%BF%E9%87%8C%E4%BA%91docker%E9%83%A8%E7%BD%B2kafka/">
+    <link itemprop="mainEntityOfPage" href="https://zhoubh.xyz/2021/09/11/wsl%E4%B8%8Bubuntu%E5%AE%89%E8%A3%85%E6%9C%80%E6%96%B0rabbitmq/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/smileAvatar.jpg">
@@ -249,7 +248,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          阿里云docker部署kafka
+          wsl下ubuntu安装最新rabbitmq
         </h1>
 
         <div class="post-meta-container">
@@ -260,14 +259,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-09-11 21:33:17" itemprop="dateCreated datePublished" datetime="2021-09-11T21:33:17+08:00">2021-09-11</time>
+      <time title="创建时间：2021-09-11 22:03:56" itemprop="dateCreated datePublished" datetime="2021-09-11T22:03:56+08:00">2021-09-11</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-12-16 19:29:01" itemprop="dateModified" datetime="2021-12-16T19:29:01+08:00">2021-12-16</time>
+        <time title="修改时间：2021-12-16 19:29:19" itemprop="dateModified" datetime="2021-12-16T19:29:19+08:00">2021-12-16</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -276,6 +275,10 @@
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/%E6%95%99%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">教程</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%99%E7%A8%8B/rabbitmq/" itemprop="url" rel="index"><span itemprop="name">rabbitmq</span></a>
         </span>
     </span>
 
@@ -293,7 +296,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.7k</span>
+      <span>2.4k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -311,55 +314,47 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><code>本文基础建立在有一台阿里云服务器，以及服务器已经安装了docker的基础上。</code></p>
-<p>被折磨了一段时间，本地始终访问不到阿里云docker里面的kafka，故写下记录,顺便吐槽一句，阿里云运行docker中的kafka时，不知道为什么kafka的内存占用非常高，搞得服务器都要宕机了(可能因为我用的免费的-.-)。 </p>
-<h2 id="docker命令"><a href="#docker命令" class="headerlink" title="docker命令"></a>docker命令</h2><p>详情可以看这篇文章<a href="https://zhoubh.xyz/2021/09/11/docker命令/" target="_blank">docker命令</a></p>
-<span id="more"></span>
+        <h2 id="写在开头"><a href="#写在开头" class="headerlink" title="写在开头"></a>写在开头</h2><p>之所以不能直接apt-get install,是因为这样安装的rabbitmq和erlang的版本都很低。</p>
+<p>如果无所谓的话，可以直接</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install erlang-nox</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install rabbitmq-server</span><br></pre></td></tr></table></figure>
 
-<h2 id="安装zookeeper和kafka"><a href="#安装zookeeper和kafka" class="headerlink" title="安装zookeeper和kafka"></a>安装zookeeper和kafka</h2><ol>
-<li>首先从仓库中下拉zookeeper和kafka的镜像</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull wurstmeister/kafka</span><br><span class="line">docker pull wurstmeister/zookeeper</span><br></pre></td></tr></table></figure>
+ <span id="more"></span>
 
-<ol start="2">
-<li>先运行zookeeper</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name zookeeper -p 2181:2181 -t wurstmeister/zookeeper</span><br></pre></td></tr></table></figure>
+<h2 id="官网下载和安装"><a href="#官网下载和安装" class="headerlink" title="官网下载和安装"></a>官网下载和安装</h2><p><code>如果你觉得你能把握得住的话，直接看官网比啥都强</code></p>
+<p>下载和安装直接去官网看教程即可，很详细，基本复制粘贴命令行即可。</p>
+<p><a target="_blank" rel="noopener" href="https://www.rabbitmq.com/download.html">https://www.rabbitmq.com/download.html</a></p>
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><p>我的环境 ubuntu 18.04</p>
+<h3 id="配置存储库"><a href="#配置存储库" class="headerlink" title="配置存储库"></a>配置存储库</h3><p>按照官方的说法:<code>using apt repositories on Cloudsmith</code>,</p>
+<p>由于rabbit需要erlang，所以进以下网址查看erlang的存储库</p>
+<p><a target="_blank" rel="noopener" href="https://cloudsmith.io/~rabbitmq/repos/rabbitmq-server/setup/#formats-deb">https://cloudsmith.io/~rabbitmq/repos/rabbitmq-server/setup/#formats-deb</a></p>
+<p>即运行如下命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -1sLf \</span><br><span class="line">  <span class="string">&#x27;https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-server/setup.deb.sh&#x27;</span> \</span><br><span class="line">  | sudo -E bash</span><br></pre></td></tr></table></figure>
 
-<p>指定2181端口给zookeeper，记住这个端口。</p>
-<ol start="3">
-<li>再运行kafka</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker run --name kafka \</span><br><span class="line">-p 9092:9092 \ <span class="comment"># 指定端口开放</span></span><br><span class="line">-e KAFKA_BROKER_ID=0 \</span><br><span class="line">-e KAFKA_ZOOKEEPER_CONNECT=阿里云内网地址:2181 \ <span class="comment"># 阿里云内网地址</span></span><br><span class="line">-e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://阿里云外网地址:9092 \ <span class="comment">#阿里云外网地址</span></span><br><span class="line">-e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 \</span><br><span class="line">-d  wurstmeister/kafka</span><br></pre></td></tr></table></figure>
+<p>再查看rabbitmq-server的存储库</p>
+<p><a target="_blank" rel="noopener" href="https://cloudsmith.io/~rabbitmq/repos/rabbitmq-server/setup/#formats-deb">https://cloudsmith.io/~rabbitmq/repos/rabbitmq-server/setup/#formats-deb</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -1sLf \</span><br><span class="line">  <span class="string">&#x27;https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-server/setup.deb.sh&#x27;</span> \</span><br><span class="line">  | sudo -E bash</span><br></pre></td></tr></table></figure>
 
-<h2 id="配置阿里云安全组"><a href="#配置阿里云安全组" class="headerlink" title="配置阿里云安全组"></a>配置阿里云安全组</h2><p>进入阿里云配置安全组</p>
-<p><img src="/2021/09/11/%E9%98%BF%E9%87%8C%E4%BA%91docker%E9%83%A8%E7%BD%B2kafka/image-20210911224744117.png" alt="image-20210911224744117"></p>
-<p>配置入方向的规则，开放zookeeper和kafka的端口</p>
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>进入kafka容器</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it kafka bash</span><br></pre></td></tr></table></figure>
-
-<p>进入bin目录</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /opt/kafka_2.13-2.6.0/bin/</span><br></pre></td></tr></table></figure>
-
-<p>发送消息</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./kafka-console-producer.sh --broker-list localhost:9092 --topic <span class="built_in">test</span> <span class="comment"># 创建了test的topic</span></span><br><span class="line">&gt;nihao <span class="comment">#发送你好</span></span><br></pre></td></tr></table></figure>
-
-<p>接收消息</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/opt/kafka_2.13-2.6.0/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic <span class="built_in">test</span> --from-beginning <span class="comment"># 从头接受test的topic消息</span></span><br><span class="line">&gt;nihao</span><br></pre></td></tr></table></figure>
+<p>如上操作之后，再搜索可用rabbitmq-server的版本，即可看到最新版本的rabbitmq-server</p>
+<p><img src="/2021/09/11/wsl%E4%B8%8Bubuntu%E5%AE%89%E8%A3%85%E6%9C%80%E6%96%B0rabbitmq/image-20211216165423322.png" alt="image-20211216165423322"></p>
+<p>erlang同理。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## Install Erlang packages</span></span><br><span class="line">sudo apt-get install -y erlang-base \</span><br><span class="line">                        erlang-asn1 erlang-crypto erlang-eldap erlang-ftp erlang-inets \</span><br><span class="line">                        erlang-mnesia erlang-os-mon erlang-parsetools erlang-public-key \</span><br><span class="line">                        erlang-runtime-tools erlang-snmp erlang-ssl \</span><br><span class="line">                        erlang-syntax-tools erlang-tftp erlang-tools erlang-xmerl</span><br><span class="line"></span><br><span class="line"><span class="comment">## Install rabbitmq-server and its dependencies</span></span><br><span class="line">sudo apt-get install rabbitmq-server -y --fix-missing</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="本地测试"><a href="#本地测试" class="headerlink" title="本地测试"></a>本地测试</h2><p>创建SpringBoot项目</p>
-<p>引入kafka依赖</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.springframework.kafka/spring-kafka --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.kafka<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-kafka<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.7.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="简单配置"><a href="#简单配置" class="headerlink" title="简单配置"></a>简单配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加admin用户，密码设置为admin。</span></span><br><span class="line">sudo rabbitmqctl add_user admin 123456  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 赋予权限</span></span><br><span class="line">sudo rabbitmqctl set_user_tags admin administrator</span><br><span class="line"></span><br><span class="line"><span class="comment"># 赋予virtual host中所有资源的配置、写、读权限以便管理其中的资源</span></span><br><span class="line">sudo rabbitmqctl  set_permissions -p / admin <span class="string">&#x27;.*&#x27;</span> <span class="string">&#x27;.*&#x27;</span> <span class="string">&#x27;.*&#x27;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>编写consumer类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Consumer</span> </span>&#123;</span><br><span class="line">    <span class="meta">@KafkaListener(topics = &#123;&quot;mq&quot;&#125;,groupId = &quot;0&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">acceptMQ</span><span class="params">(String message)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;message:&quot;</span> + message);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>在测试类中添加如下代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> KafkaTemplate&lt;String,String&gt; kafkaTemplate;</span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">contextLoads</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    kafkaTemplate.send(<span class="string">&quot;mq&quot;</span>,<span class="string">&quot;haha&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>启动项目，再运行测试类，即可看到结果,输出了haha</p>
+<h3 id="可视化管理界面插件"><a href="#可视化管理界面插件" class="headerlink" title="可视化管理界面插件"></a>可视化管理界面插件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># root /usr/lib</span></span><br><span class="line">$ whereis rabbitmq </span><br><span class="line">rabbitmq: /usr/lib/rabbitmq /etc/rabbitmq </span><br><span class="line"></span><br><span class="line"><span class="comment"># root /usr/lib</span></span><br><span class="line">$ <span class="built_in">cd</span> /usr/lib/rabbitmq/bin/ </span><br><span class="line"></span><br><span class="line"><span class="comment"># root /usr/lib/rabbitmq/bin</span></span><br><span class="line">$ ls</span><br><span class="line">rabbitmq-defaults     rabbitmq-env      rabbitmq-queues  rabbitmq-streams  rabbitmq-upgrade </span><br><span class="line">rabbitmq-diagnostics  rabbitmq-plugins  rabbitmq-server  rabbitmq-tanzu    rabbitmqctl</span><br><span class="line"></span><br><span class="line"><span class="comment"># root /usr/lib/rabbitmq/bin</span></span><br><span class="line">$ sudo rabbitmq-plugins <span class="built_in">enable</span> rabbitmq_management</span><br><span class="line">Enabling plugins on node rabbit@pc-hz20170262: </span><br><span class="line">rabbitmq_management</span><br><span class="line">The following plugins have been configured: </span><br><span class="line">  rabbitmq_management</span><br><span class="line">  rabbitmq_management_agent</span><br><span class="line">  rabbitmq_web_dispatch</span><br><span class="line">Applying plugin configuration to rabbit@pc-hz20170262...</span><br><span class="line">The following plugins have been enabled: </span><br><span class="line">  rabbitmq_management</span><br><span class="line">  rabbitmq_management_agent</span><br><span class="line">  rabbitmq_web_dispatch</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> 3 plugins.</span><br><span class="line">Offline change; changes will take effect at broker restart.</span><br></pre></td></tr></table></figure>
+
+
+
+<p>rabbit管理页面url为 <code>http://wsl的ip:15672</code></p>
+<p><img src="../images/wsl%E4%B8%8Bubuntu%E5%AE%89%E8%A3%85%E6%9C%80%E6%96%B0rabbitmq/image-20211216170442344.png" alt="image-20211216170442344"></p>
+<h3 id="简单命令"><a href="#简单命令" class="headerlink" title="简单命令"></a>简单命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动rabbitmq服务</span></span><br><span class="line">sudo service rabbitmq-server start </span><br><span class="line"><span class="comment"># 关闭rabbitmq服务</span></span><br><span class="line">sudo service rabbitmq-server stop</span><br><span class="line"><span class="comment"># 重启服务</span></span><br><span class="line">sudo service rabbitmq-server restart</span><br><span class="line"><span class="comment"># 查看服务运行状态</span></span><br><span class="line">sudo service rabbitmqctl status</span><br></pre></td></tr></table></figure>
+
+
+
 
     </div>
 
@@ -377,7 +372,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://zhoubh.xyz/2021/09/11/%E9%98%BF%E9%87%8C%E4%BA%91docker%E9%83%A8%E7%BD%B2kafka/" title="阿里云docker部署kafka">https://zhoubh.xyz/2021/09/11/阿里云docker部署kafka/</a>
+      <a href="https://zhoubh.xyz/2021/09/11/wsl%E4%B8%8Bubuntu%E5%AE%89%E8%A3%85%E6%9C%80%E6%96%B0rabbitmq/" title="wsl下ubuntu安装最新rabbitmq">https://zhoubh.xyz/2021/09/11/wsl下ubuntu安装最新rabbitmq/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -386,22 +381,20 @@
 </div>
 
           <div class="post-tags">
-              <a href="/tags/docker/" rel="tag"># docker</a>
-              <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" rel="tag"># 阿里云</a>
-              <a href="/tags/kafka/" rel="tag"># kafka</a>
+              <a href="/tags/rabbitmq/" rel="tag"># rabbitmq</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/08/28/abc/" rel="prev" title="Hello World">
-                  <i class="fa fa-chevron-left"></i> Hello World
+                <a href="/2021/09/11/%E9%98%BF%E9%87%8C%E4%BA%91docker%E9%83%A8%E7%BD%B2kafka/" rel="prev" title="阿里云docker部署kafka">
+                  <i class="fa fa-chevron-left"></i> 阿里云docker部署kafka
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/09/11/wsl%E4%B8%8Bubuntu%E5%AE%89%E8%A3%85%E6%9C%80%E6%96%B0rabbitmq/" rel="next" title="wsl下ubuntu安装最新rabbitmq">
-                  wsl下ubuntu安装最新rabbitmq <i class="fa fa-chevron-right"></i>
+                <a href="/2021/09/11/docker%E5%91%BD%E4%BB%A4/" rel="next" title="docker命令">
+                  docker命令 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
