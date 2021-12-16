@@ -46,7 +46,7 @@
     <link href="https://zhoubh.xyz/2021/09/11/wsl%E4%B8%8Bubuntu%E5%AE%89%E8%A3%85%E6%9C%80%E6%96%B0rabbitmq/"/>
     <id>https://zhoubh.xyz/2021/09/11/wsl%E4%B8%8Bubuntu%E5%AE%89%E8%A3%85%E6%9C%80%E6%96%B0rabbitmq/</id>
     <published>2021-09-11T14:03:56.000Z</published>
-    <updated>2021-12-16T11:29:19.381Z</updated>
+    <updated>2021-12-16T11:41:42.966Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;写在开头&quot;&gt;&lt;a href=&quot;#写在开头&quot; class=&quot;headerlink&quot; title=&quot;写在开头&quot;&gt;&lt;/a&gt;写在开头&lt;/h2&gt;&lt;p&gt;之所以不能直接apt-get install,是因为这样安装的rabbitmq和erlang的版本都很低。&lt;/p&gt;
@@ -69,7 +69,7 @@
     <link href="https://zhoubh.xyz/2021/09/11/%E9%98%BF%E9%87%8C%E4%BA%91docker%E9%83%A8%E7%BD%B2kafka/"/>
     <id>https://zhoubh.xyz/2021/09/11/%E9%98%BF%E9%87%8C%E4%BA%91docker%E9%83%A8%E7%BD%B2kafka/</id>
     <published>2021-09-11T13:33:17.000Z</published>
-    <updated>2021-12-16T11:29:01.009Z</updated>
+    <updated>2021-12-16T11:40:57.762Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;code&gt;本文基础建立在有一台阿里云服务器，以及服务器已经安装了docker的基础上。&lt;/code&gt;&lt;/p&gt;
