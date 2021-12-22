@@ -6,7 +6,7 @@
   <link href="https://zhoubh.xyz/atom.xml" rel="self"/>
   
   <link href="https://zhoubh.xyz/"/>
-  <updated>2021-12-16T12:44:07.792Z</updated>
+  <updated>2021-12-22T13:34:09.570Z</updated>
   <id>https://zhoubh.xyz/</id>
   
   <author>
@@ -21,12 +21,11 @@
     <link href="https://zhoubh.xyz/2021/12/26/wsl%E4%B8%8Bubuntu%E5%AE%89%E8%A3%85%E6%9C%80%E6%96%B0rabbitmq/"/>
     <id>https://zhoubh.xyz/2021/12/26/wsl%E4%B8%8Bubuntu%E5%AE%89%E8%A3%85%E6%9C%80%E6%96%B0rabbitmq/</id>
     <published>2021-12-26T07:03:56.000Z</published>
-    <updated>2021-12-16T12:44:07.792Z</updated>
+    <updated>2021-12-22T13:34:09.570Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;写在开头&quot;&gt;&lt;a href=&quot;#写在开头&quot; class=&quot;headerlink&quot; title=&quot;写在开头&quot;&gt;&lt;/a&gt;写在开头&lt;/h2&gt;&lt;p&gt;之所以不能直接apt-get install,是因为这样安装的rabbitmq和erlang的版本都很低。&lt;/p&gt;
-&lt;p&gt;如果无所谓的话，可以直接&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;sudo apt-get install erlang-nox&lt;br&gt;sudo apt-get update&lt;br&gt;sudo apt-get install rabbitmq-server&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+&lt;p&gt;如果无所谓的话，可以直接安装并跳过这篇文章。&lt;/p&gt;</summary>
     
     
     
@@ -44,14 +43,10 @@
     <link href="https://zhoubh.xyz/2021/09/11/docker%E5%91%BD%E4%BB%A4/"/>
     <id>https://zhoubh.xyz/2021/09/11/docker%E5%91%BD%E4%BB%A4/</id>
     <published>2021-09-11T14:03:56.000Z</published>
-    <updated>2021-09-11T15:32:55.353Z</updated>
+    <updated>2021-12-22T13:32:11.384Z</updated>
     
     
-    <summary type="html">&lt;p&gt;&lt;code&gt;本文主要介绍常用命令&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&quot;基础命令&quot;&gt;&lt;a href=&quot;#基础命令&quot; class=&quot;headerlink&quot; title=&quot;基础命令&quot;&gt;&lt;/a&gt;基础命令&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;docker version &lt;span class=&quot;hljs-comment&quot;&gt;# 查看docker版本&lt;/span&gt;&lt;br&gt;docker info &lt;span class=&quot;hljs-comment&quot;&gt;# docker详细信息&lt;/span&gt;&lt;br&gt;docker --&lt;span class=&quot;hljs-built_in&quot;&gt;help&lt;/span&gt; &lt;span class=&quot;hljs-comment&quot;&gt;#查看docker容器帮助&lt;/span&gt;&lt;br&gt;docker container ls &lt;span class=&quot;hljs-comment&quot;&gt;# 查看所有容器&lt;/span&gt;&lt;br&gt;docker stats &lt;span class=&quot;hljs-comment&quot;&gt;# docker运行占用资源情况&lt;/span&gt;&lt;br&gt;docker ps &lt;span class=&quot;hljs-comment&quot;&gt;#查看正在运行的docker容器&lt;/span&gt;&lt;br&gt;	-a &lt;span class=&quot;hljs-comment&quot;&gt;#查看所有容器&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;p&gt;docker ps -a示例&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;&lt;br&gt;&lt;span class=&quot;hljs-comment&quot;&gt;# docker ps -a&lt;/span&gt;&lt;br&gt;CONTAINER ID   IMAGE                    COMMAND                  CREATED        STATUS                        PORTS                                                NAMES&lt;br&gt;55b81d86e23c   wurstmeister/kafka       &lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;start-kafka.sh&amp;quot;&lt;/span&gt;         36 hours ago   Exited (255) 50 minutes ago   0.0.0.0:9092-&amp;gt;9092/tcp                               kafka&lt;br&gt;902fa0db811e   wurstmeister/zookeeper   &lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;/bin/sh -c &amp;#x27;/usr/sb…&amp;quot;&lt;/span&gt;   37 hours ago   Exited (255) 50 minutes ago   22/tcp, 2888/tcp, 3888/tcp, 0.0.0.0:2181-&amp;gt;2181/tcp   zookeeper&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    <summary type="html">&lt;p&gt;&lt;code&gt;本文主要介绍常用命令&lt;/code&gt;&lt;/p&gt;</summary>
     
     
     
@@ -69,12 +64,11 @@
     <link href="https://zhoubh.xyz/2021/09/11/%E9%98%BF%E9%87%8C%E4%BA%91docker%E9%83%A8%E7%BD%B2kafka/"/>
     <id>https://zhoubh.xyz/2021/09/11/%E9%98%BF%E9%87%8C%E4%BA%91docker%E9%83%A8%E7%BD%B2kafka/</id>
     <published>2021-09-11T13:33:17.000Z</published>
-    <updated>2021-12-16T12:44:18.616Z</updated>
+    <updated>2021-12-22T13:34:47.555Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;code&gt;本文基础建立在有一台阿里云服务器，以及服务器已经安装了docker的基础上。&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;被折磨了一段时间，本地始终访问不到阿里云docker里面的kafka，故写下记录,顺便吐槽一句，阿里云运行docker中的kafka时，不知道为什么kafka的内存占用非常高，搞得服务器都要宕机了(可能因为我用的免费的-.-)。 &lt;/p&gt;
-&lt;h2 id=&quot;docker命令&quot;&gt;&lt;a href=&quot;#docker命令&quot; class=&quot;headerlink&quot; title=&quot;docker命令&quot;&gt;&lt;/a&gt;docker命令&lt;/h2&gt;&lt;p&gt;详情可以看这篇文章&lt;a href=&quot;https://zhoubh.xyz/2021/09/11/docker命令/&quot; target=&quot;_blank&quot;&gt;docker命令&lt;/a&gt;&lt;/p&gt;</summary>
+&lt;p&gt;被折磨了一段时间，本地始终访问不到阿里云docker里面的kafka，故写下记录,顺便吐槽一句，阿里云运行docker中的kafka时，不知道为什么kafka的内存占用非常高，搞得服务器都要宕机了(可能因为我用的免费的-.-)。 &lt;/p&gt;</summary>
     
     
     
@@ -94,13 +88,10 @@
     <link href="https://zhoubh.xyz/2021/08/28/abc/"/>
     <id>https://zhoubh.xyz/2021/08/28/abc/</id>
     <published>2021-08-28T10:28:39.223Z</published>
-    <updated>2021-09-11T15:32:53.795Z</updated>
+    <updated>2021-12-22T13:35:49.726Z</updated>
     
     
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;$ hexo new &lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;test&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/writing.html&quot;&gt;Writing&lt;/a&gt;&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;</summary>
     
     
     

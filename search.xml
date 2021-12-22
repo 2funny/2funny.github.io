@@ -1,174 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title>Hello World</title>
-    <url>/2021/08/28/abc/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;test&quot;</span><br></code></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
- <span id="more"></span>
-
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-<p><a href="www.baidu.com">test</a></p>
-]]></content>
+<search> 
+  
+  
+    
+    <entry>
+      <title>wsl下ubuntu安装最新rabbitmq</title>
+      <link href="/2021/12/26/wsl%E4%B8%8Bubuntu%E5%AE%89%E8%A3%85%E6%9C%80%E6%96%B0rabbitmq/"/>
+      <url>/2021/12/26/wsl%E4%B8%8Bubuntu%E5%AE%89%E8%A3%85%E6%9C%80%E6%96%B0rabbitmq/</url>
+      
+        <content type="html"><![CDATA[<h2 id="写在开头"><a href="#写在开头" class="headerlink" title="写在开头"></a>写在开头</h2><p>之所以不能直接apt-get install,是因为这样安装的rabbitmq和erlang的版本都很低。</p><p>如果无所谓的话，可以直接安装并跳过这篇文章。</p><span id="more"></span><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt-get install erlang-nox<br>sudo apt-get update<br>sudo apt-get install rabbitmq-server<br></code></pre></td></tr></table></figure><h2 id="官网下载和安装"><a href="#官网下载和安装" class="headerlink" title="官网下载和安装"></a>官网下载和安装</h2><p><code>如果你觉得你能把握得住的话，直接看官网比啥都强</code></p><p>下载和安装直接去官网看教程即可，很详细，基本复制粘贴命令行即可。</p><p><a href="https://www.rabbitmq.com/download.html">https://www.rabbitmq.com/download.html</a></p><h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><p>我的环境 ubuntu 18.04</p><h3 id="配置存储库"><a href="#配置存储库" class="headerlink" title="配置存储库"></a>配置存储库</h3><p>按照官方的说法:<code>using apt repositories on Cloudsmith</code>,</p><p>由于rabbit需要erlang，所以进以下网址查看erlang的存储库</p><p><a href="https://cloudsmith.io/~rabbitmq/repos/rabbitmq-server/setup/#formats-deb">https://cloudsmith.io/~rabbitmq/repos/rabbitmq-server/setup/#formats-deb</a></p><p>即运行如下命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl -1sLf \<br>  <span class="hljs-string">&#x27;https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-server/setup.deb.sh&#x27;</span> \<br>  | sudo -E bash<br></code></pre></td></tr></table></figure><p>再查看rabbitmq-server的存储库</p><p><a href="https://cloudsmith.io/~rabbitmq/repos/rabbitmq-server/setup/#formats-deb">https://cloudsmith.io/~rabbitmq/repos/rabbitmq-server/setup/#formats-deb</a></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl -1sLf \<br>  <span class="hljs-string">&#x27;https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-server/setup.deb.sh&#x27;</span> \<br>  | sudo -E bash<br></code></pre></td></tr></table></figure><p>如上操作之后，再搜索可用rabbitmq-server的版本，即可看到最新版本的rabbitmq-server</p><p><img src="https://gitee.com/funny2/pic-repo/raw/master/img/image-20211216165423322.png" alt="image-20211216165423322"></p><p>erlang同理。</p><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">## Install Erlang packages</span><br>sudo apt-get install -y erlang-base \<br>                        erlang-asn1 erlang-crypto erlang-eldap erlang-ftp erlang-inets \<br>                        erlang-mnesia erlang-os-mon erlang-parsetools erlang-public-key \<br>                        erlang-runtime-tools erlang-snmp erlang-ssl \<br>                        erlang-syntax-tools erlang-tftp erlang-tools erlang-xmerl<br><br><span class="hljs-comment">## Install rabbitmq-server and its dependencies</span><br>sudo apt-get install rabbitmq-server -y --fix-missing<br></code></pre></td></tr></table></figure><h3 id="简单配置"><a href="#简单配置" class="headerlink" title="简单配置"></a>简单配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 添加admin用户，密码设置为admin。</span><br>sudo rabbitmqctl add_user admin 123456  <br><br><span class="hljs-comment"># 赋予权限</span><br>sudo rabbitmqctl set_user_tags admin administrator<br><br><span class="hljs-comment"># 赋予virtual host中所有资源的配置、写、读权限以便管理其中的资源</span><br>sudo rabbitmqctl  set_permissions -p / admin <span class="hljs-string">&#x27;.*&#x27;</span> <span class="hljs-string">&#x27;.*&#x27;</span> <span class="hljs-string">&#x27;.*&#x27;</span><br><br></code></pre></td></tr></table></figure><h3 id="可视化管理界面插件"><a href="#可视化管理界面插件" class="headerlink" title="可视化管理界面插件"></a>可视化管理界面插件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># root /usr/lib</span><br>$ whereis rabbitmq <br>rabbitmq: /usr/lib/rabbitmq /etc/rabbitmq <br><br><span class="hljs-comment"># root /usr/lib</span><br>$ <span class="hljs-built_in">cd</span> /usr/lib/rabbitmq/bin/ <br><br><span class="hljs-comment"># root /usr/lib/rabbitmq/bin</span><br>$ ls<br>rabbitmq-defaults     rabbitmq-env      rabbitmq-queues  rabbitmq-streams  rabbitmq-upgrade <br>rabbitmq-diagnostics  rabbitmq-plugins  rabbitmq-server  rabbitmq-tanzu    rabbitmqctl<br><br><span class="hljs-comment"># root /usr/lib/rabbitmq/bin</span><br>$ sudo rabbitmq-plugins <span class="hljs-built_in">enable</span> rabbitmq_management<br>Enabling plugins on node rabbit@pc-hz20170262: <br>rabbitmq_management<br>The following plugins have been configured: <br>  rabbitmq_management<br>  rabbitmq_management_agent<br>  rabbitmq_web_dispatch<br>Applying plugin configuration to rabbit@pc-hz20170262...<br>The following plugins have been enabled: <br>  rabbitmq_management<br>  rabbitmq_management_agent<br>  rabbitmq_web_dispatch<br><br><span class="hljs-built_in">set</span> 3 plugins.<br>Offline change; changes will take effect at broker restart.<br></code></pre></td></tr></table></figure><p>rabbit管理页面url为 <code>http://wsl的ip:15672</code></p><p><img src="https://gitee.com/funny2/pic-repo/raw/master/img/image-20211216170442344.png" alt="image-20211216170442344"></p><h3 id="简单命令"><a href="#简单命令" class="headerlink" title="简单命令"></a>简单命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 启动rabbitmq服务</span><br>sudo service rabbitmq-server start <br><span class="hljs-comment"># 关闭rabbitmq服务</span><br>sudo service rabbitmq-server stop<br><span class="hljs-comment"># 重启服务</span><br>sudo service rabbitmq-server restart<br><span class="hljs-comment"># 查看服务运行状态</span><br>sudo service rabbitmqctl status<br></code></pre></td></tr></table></figure>]]></content>
+      
+      
       <categories>
-        <category>life</category>
+          
+          <category> 教程 </category>
+          
+          <category> rabbitmq </category>
+          
       </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>test</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>docker命令</title>
-    <url>/2021/09/11/docker%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<p><code>本文主要介绍常用命令</code></p>
-<h2 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">docker version <span class="hljs-comment"># 查看docker版本</span><br>docker info <span class="hljs-comment"># docker详细信息</span><br>docker --<span class="hljs-built_in">help</span> <span class="hljs-comment">#查看docker容器帮助</span><br>docker container ls <span class="hljs-comment"># 查看所有容器</span><br>docker stats <span class="hljs-comment"># docker运行占用资源情况</span><br>docker ps <span class="hljs-comment">#查看正在运行的docker容器</span><br>	-a <span class="hljs-comment">#查看所有容器</span><br></code></pre></td></tr></table></figure>
-
-<p>docker ps -a示例</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><br><span class="hljs-comment"># docker ps -a</span><br>CONTAINER ID   IMAGE                    COMMAND                  CREATED        STATUS                        PORTS                                                NAMES<br>55b81d86e23c   wurstmeister/kafka       <span class="hljs-string">&quot;start-kafka.sh&quot;</span>         36 hours ago   Exited (255) 50 minutes ago   0.0.0.0:9092-&gt;9092/tcp                               kafka<br>902fa0db811e   wurstmeister/zookeeper   <span class="hljs-string">&quot;/bin/sh -c &#x27;/usr/sb…&quot;</span>   37 hours ago   Exited (255) 50 minutes ago   22/tcp, 2888/tcp, 3888/tcp, 0.0.0.0:2181-&gt;2181/tcp   zookeeper<br></code></pre></td></tr></table></figure>
-
- <span id="more"></span>
-
-
-
-<h2 id="容器操作"><a href="#容器操作" class="headerlink" title="容器操作"></a>容器操作</h2><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">docker run <br>	-d 表示后台运行容器，并返回容器ID <br>	--name 为容器指定名称<br>	-p 指定容器的端口，即 -p 主机端口：容器端口（常规写法，比较常用用）<br>	-i: 以交互模式运行容器，通常与 -t 同时使用；   //相当于在本地添加了一个系统<br>	-t: 为容器重新分配一个伪输入终端，通常与 -i 同时使用即-it； <br>	-e 指定环境变量<br>docker <span class="hljs-built_in">exec</span> 容器ID <span class="hljs-comment"># 进入容器内，exit可以推出</span><br>docker stop [容器] <span class="hljs-comment"># 停止容器，可以通过容器id(一般只需要容器id前三位)或者名称</span><br>docker restart [容器] <span class="hljs-comment"># 重启容器，可以通过容器id(一般只需要容器id前三位)或者名称</span><br>docker rm [容器] <span class="hljs-comment">#删除容器,可以通过容器id(一般只需要容器id前三位)或者名称</span><br>	-f 强制删除容器，可以删除运行中的容器<br>	-v 删除容器挂载的数据卷<br></code></pre></td></tr></table></figure>
-
-
-
-<h2 id="镜像操作"><a href="#镜像操作" class="headerlink" title="镜像操作"></a>镜像操作</h2><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">docker search xxx <span class="hljs-comment">#搜索相关镜像</span><br>docker pull image名称 <span class="hljs-comment">#拉取镜像</span><br>docker images <span class="hljs-comment"># 查看所有已下载镜像，等价于：docker image ls 命令</span><br>docker image ls <span class="hljs-comment"># 查看所有镜像</span><br>docker image prune <span class="hljs-comment"># 清理临时的、没有被使用的镜像文件。</span><br>	-a, --all: 删除所有没有用的镜像，而不仅仅是临时文件；<br>docker rmi [镜像] <span class="hljs-comment">#删除镜像，但是需要先停止使用了该镜像的容器，可以通过镜像id(一般只需要镜像id前三位)或者名称</span><br><span class="hljs-built_in">cd</span> /docker/dockerfile <span class="hljs-comment">#编写dockerfile</span><br>vim mycentos <span class="hljs-comment">#编写dockerfile</span><br>docker build -f /docker/dockerfile/mycentos -t mycentos:1.1 <span class="hljs-comment">#构建docker镜像</span><br></code></pre></td></tr></table></figure>
-
-
-
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> rabbitmq </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>docker命令</title>
+      <link href="/2021/09/11/docker%E5%91%BD%E4%BB%A4/"/>
+      <url>/2021/09/11/docker%E5%91%BD%E4%BB%A4/</url>
+      
+        <content type="html"><![CDATA[<p><code>本文主要介绍常用命令</code></p> <span id="more"></span><h2 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker version <span class="hljs-comment"># 查看docker版本</span><br>docker info <span class="hljs-comment"># docker详细信息</span><br>docker --<span class="hljs-built_in">help</span> <span class="hljs-comment">#查看docker容器帮助</span><br>docker container ls <span class="hljs-comment"># 查看所有容器</span><br>docker stats <span class="hljs-comment"># docker运行占用资源情况</span><br>docker ps <span class="hljs-comment">#查看正在运行的docker容器</span><br>-a <span class="hljs-comment">#查看所有容器</span><br></code></pre></td></tr></table></figure><p>docker ps -a示例</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><br><span class="hljs-comment"># docker ps -a</span><br>CONTAINER ID   IMAGE                    COMMAND                  CREATED        STATUS                        PORTS                                                NAMES<br>55b81d86e23c   wurstmeister/kafka       <span class="hljs-string">&quot;start-kafka.sh&quot;</span>         36 hours ago   Exited (255) 50 minutes ago   0.0.0.0:9092-&gt;9092/tcp                               kafka<br>902fa0db811e   wurstmeister/zookeeper   <span class="hljs-string">&quot;/bin/sh -c &#x27;/usr/sb…&quot;</span>   37 hours ago   Exited (255) 50 minutes ago   22/tcp, 2888/tcp, 3888/tcp, 0.0.0.0:2181-&gt;2181/tcp   zookeeper<br></code></pre></td></tr></table></figure><h2 id="容器操作"><a href="#容器操作" class="headerlink" title="容器操作"></a>容器操作</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run <br>-d 表示后台运行容器，并返回容器ID <br>--name 为容器指定名称<br>-p 指定容器的端口，即 -p 主机端口：容器端口（常规写法，比较常用用）<br>-i: 以交互模式运行容器，通常与 -t 同时使用；   //相当于在本地添加了一个系统<br>-t: 为容器重新分配一个伪输入终端，通常与 -i 同时使用即-it； <br>-e 指定环境变量<br>docker <span class="hljs-built_in">exec</span> 容器ID <span class="hljs-comment"># 进入容器内，exit可以推出</span><br>docker stop [容器] <span class="hljs-comment"># 停止容器，可以通过容器id(一般只需要容器id前三位)或者名称</span><br>docker restart [容器] <span class="hljs-comment"># 重启容器，可以通过容器id(一般只需要容器id前三位)或者名称</span><br>docker rm [容器] <span class="hljs-comment">#删除容器,可以通过容器id(一般只需要容器id前三位)或者名称</span><br>-f 强制删除容器，可以删除运行中的容器<br>-v 删除容器挂载的数据卷<br></code></pre></td></tr></table></figure><h2 id="镜像操作"><a href="#镜像操作" class="headerlink" title="镜像操作"></a>镜像操作</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker search xxx <span class="hljs-comment">#搜索相关镜像</span><br>docker pull image名称 <span class="hljs-comment">#拉取镜像</span><br>docker images <span class="hljs-comment"># 查看所有已下载镜像，等价于：docker image ls 命令</span><br>docker image ls <span class="hljs-comment"># 查看所有镜像</span><br>docker image prune <span class="hljs-comment"># 清理临时的、没有被使用的镜像文件。</span><br>-a, --all: 删除所有没有用的镜像，而不仅仅是临时文件；<br>docker rmi [镜像] <span class="hljs-comment">#删除镜像，但是需要先停止使用了该镜像的容器，可以通过镜像id(一般只需要镜像id前三位)或者名称</span><br><span class="hljs-built_in">cd</span> /docker/dockerfile <span class="hljs-comment">#编写dockerfile</span><br>vim mycentos <span class="hljs-comment">#编写dockerfile</span><br>docker build -f /docker/dockerfile/mycentos -t mycentos:1.1 <span class="hljs-comment">#构建docker镜像</span><br></code></pre></td></tr></table></figure>]]></content>
+      
+      
       <categories>
-        <category>教程</category>
-        <category>docker</category>
+          
+          <category> 教程 </category>
+          
+          <category> docker </category>
+          
       </categories>
-      <tags>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>wsl下ubuntu安装最新rabbitmq</title>
-    <url>/2021/12/26/wsl%E4%B8%8Bubuntu%E5%AE%89%E8%A3%85%E6%9C%80%E6%96%B0rabbitmq/</url>
-    <content><![CDATA[<h2 id="写在开头"><a href="#写在开头" class="headerlink" title="写在开头"></a>写在开头</h2><p>之所以不能直接apt-get install,是因为这样安装的rabbitmq和erlang的版本都很低。</p>
-<p>如果无所谓的话，可以直接</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo apt-get install erlang-nox<br>sudo apt-get update<br>sudo apt-get install rabbitmq-server<br></code></pre></td></tr></table></figure>
-
- <span id="more"></span>
-
-<h2 id="官网下载和安装"><a href="#官网下载和安装" class="headerlink" title="官网下载和安装"></a>官网下载和安装</h2><p><code>如果你觉得你能把握得住的话，直接看官网比啥都强</code></p>
-<p>下载和安装直接去官网看教程即可，很详细，基本复制粘贴命令行即可。</p>
-<p><a href="https://www.rabbitmq.com/download.html">https://www.rabbitmq.com/download.html</a></p>
-<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><p>我的环境 ubuntu 18.04</p>
-<h3 id="配置存储库"><a href="#配置存储库" class="headerlink" title="配置存储库"></a>配置存储库</h3><p>按照官方的说法:<code>using apt repositories on Cloudsmith</code>,</p>
-<p>由于rabbit需要erlang，所以进以下网址查看erlang的存储库</p>
-<p><a href="https://cloudsmith.io/~rabbitmq/repos/rabbitmq-server/setup/#formats-deb">https://cloudsmith.io/~rabbitmq/repos/rabbitmq-server/setup/#formats-deb</a></p>
-<p>即运行如下命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">curl -1sLf \<br>  <span class="hljs-string">&#x27;https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-server/setup.deb.sh&#x27;</span> \<br>  | sudo -E bash<br></code></pre></td></tr></table></figure>
-
-<p>再查看rabbitmq-server的存储库</p>
-<p><a href="https://cloudsmith.io/~rabbitmq/repos/rabbitmq-server/setup/#formats-deb">https://cloudsmith.io/~rabbitmq/repos/rabbitmq-server/setup/#formats-deb</a></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">curl -1sLf \<br>  <span class="hljs-string">&#x27;https://dl.cloudsmith.io/public/rabbitmq/rabbitmq-server/setup.deb.sh&#x27;</span> \<br>  | sudo -E bash<br></code></pre></td></tr></table></figure>
-
-<p>如上操作之后，再搜索可用rabbitmq-server的版本，即可看到最新版本的rabbitmq-server</p>
-<p><img src="https://gitee.com/funny2/pic-repo/raw/master/img/image-20211216165423322.png" alt="image-20211216165423322"></p>
-<p>erlang同理。</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">## Install Erlang packages</span><br>sudo apt-get install -y erlang-base \<br>                        erlang-asn1 erlang-crypto erlang-eldap erlang-ftp erlang-inets \<br>                        erlang-mnesia erlang-os-mon erlang-parsetools erlang-public-key \<br>                        erlang-runtime-tools erlang-snmp erlang-ssl \<br>                        erlang-syntax-tools erlang-tftp erlang-tools erlang-xmerl<br><br><span class="hljs-comment">## Install rabbitmq-server and its dependencies</span><br>sudo apt-get install rabbitmq-server -y --fix-missing<br></code></pre></td></tr></table></figure>
-
-
-
-<h3 id="简单配置"><a href="#简单配置" class="headerlink" title="简单配置"></a>简单配置</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 添加admin用户，密码设置为admin。</span><br>sudo rabbitmqctl add_user admin 123456  <br><br><span class="hljs-comment"># 赋予权限</span><br>sudo rabbitmqctl set_user_tags admin administrator<br><br><span class="hljs-comment"># 赋予virtual host中所有资源的配置、写、读权限以便管理其中的资源</span><br>sudo rabbitmqctl  set_permissions -p / admin <span class="hljs-string">&#x27;.*&#x27;</span> <span class="hljs-string">&#x27;.*&#x27;</span> <span class="hljs-string">&#x27;.*&#x27;</span><br><br></code></pre></td></tr></table></figure>
-
-
-
-<h3 id="可视化管理界面插件"><a href="#可视化管理界面插件" class="headerlink" title="可视化管理界面插件"></a>可视化管理界面插件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># root /usr/lib</span><br>$ whereis rabbitmq <br>rabbitmq: /usr/lib/rabbitmq /etc/rabbitmq <br><br><span class="hljs-comment"># root /usr/lib</span><br>$ <span class="hljs-built_in">cd</span> /usr/lib/rabbitmq/bin/ <br><br><span class="hljs-comment"># root /usr/lib/rabbitmq/bin</span><br>$ ls<br>rabbitmq-defaults     rabbitmq-env      rabbitmq-queues  rabbitmq-streams  rabbitmq-upgrade <br>rabbitmq-diagnostics  rabbitmq-plugins  rabbitmq-server  rabbitmq-tanzu    rabbitmqctl<br><br><span class="hljs-comment"># root /usr/lib/rabbitmq/bin</span><br>$ sudo rabbitmq-plugins <span class="hljs-built_in">enable</span> rabbitmq_management<br>Enabling plugins on node rabbit@pc-hz20170262: <br>rabbitmq_management<br>The following plugins have been configured: <br>  rabbitmq_management<br>  rabbitmq_management_agent<br>  rabbitmq_web_dispatch<br>Applying plugin configuration to rabbit@pc-hz20170262...<br>The following plugins have been enabled: <br>  rabbitmq_management<br>  rabbitmq_management_agent<br>  rabbitmq_web_dispatch<br><br><span class="hljs-built_in">set</span> 3 plugins.<br>Offline change; changes will take effect at broker restart.<br></code></pre></td></tr></table></figure>
-
-
-
-<p>rabbit管理页面url为 <code>http://wsl的ip:15672</code></p>
-<p><img src="https://gitee.com/funny2/pic-repo/raw/master/img/image-20211216170442344.png" alt="image-20211216170442344"></p>
-<h3 id="简单命令"><a href="#简单命令" class="headerlink" title="简单命令"></a>简单命令</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 启动rabbitmq服务</span><br>sudo service rabbitmq-server start <br><span class="hljs-comment"># 关闭rabbitmq服务</span><br>sudo service rabbitmq-server stop<br><span class="hljs-comment"># 重启服务</span><br>sudo service rabbitmq-server restart<br><span class="hljs-comment"># 查看服务运行状态</span><br>sudo service rabbitmqctl status<br></code></pre></td></tr></table></figure>
-
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>阿里云docker部署kafka</title>
+      <link href="/2021/09/11/%E9%98%BF%E9%87%8C%E4%BA%91docker%E9%83%A8%E7%BD%B2kafka/"/>
+      <url>/2021/09/11/%E9%98%BF%E9%87%8C%E4%BA%91docker%E9%83%A8%E7%BD%B2kafka/</url>
+      
+        <content type="html"><![CDATA[<p><code>本文基础建立在有一台阿里云服务器，以及服务器已经安装了docker的基础上。</code></p><p>被折磨了一段时间，本地始终访问不到阿里云docker里面的kafka，故写下记录,顺便吐槽一句，阿里云运行docker中的kafka时，不知道为什么kafka的内存占用非常高，搞得服务器都要宕机了(可能因为我用的免费的-.-)。 </p><span id="more"></span><h2 id="docker命令"><a href="#docker命令" class="headerlink" title="docker命令"></a>docker命令</h2><p>详情可以看这篇文章<a href="https://zhoubh.xyz/2021/09/11/docker命令/" target="_blank">docker命令</a></p><h2 id="安装zookeeper和kafka"><a href="#安装zookeeper和kafka" class="headerlink" title="安装zookeeper和kafka"></a>安装zookeeper和kafka</h2><ol><li>首先从仓库中下拉zookeeper和kafka的镜像</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker pull wurstmeister/kafka<br>docker pull wurstmeister/zookeeper<br></code></pre></td></tr></table></figure><ol start="2"><li>先运行zookeeper</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run -d --name zookeeper -p 2181:2181 -t wurstmeister/zookeeper<br></code></pre></td></tr></table></figure><p>指定2181端口给zookeeper，记住这个端口。</p><ol start="3"><li>再运行kafka</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run --name kafka \<br>-p 9092:9092 \ <span class="hljs-comment"># 指定端口开放</span><br>-e KAFKA_BROKER_ID=0 \<br>-e KAFKA_ZOOKEEPER_CONNECT=阿里云内网地址:2181 \ <span class="hljs-comment"># 阿里云内网地址</span><br>-e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://阿里云外网地址:9092 \ <span class="hljs-comment">#阿里云外网地址</span><br>-e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 \<br>-d  wurstmeister/kafka<br></code></pre></td></tr></table></figure><h2 id="配置阿里云安全组"><a href="#配置阿里云安全组" class="headerlink" title="配置阿里云安全组"></a>配置阿里云安全组</h2><p>进入阿里云配置安全组</p><p><img src="https://gitee.com/funny2/pic-repo/raw/master/img/image-20210911224744188.png" alt="image-20210911224744188"></p><p>配置入方向的规则，开放zookeeper和kafka的端口</p><h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>进入kafka容器</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker <span class="hljs-built_in">exec</span> -it kafka bash<br></code></pre></td></tr></table></figure><p>进入bin目录</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> /opt/kafka_2.13-2.6.0/bin/<br></code></pre></td></tr></table></figure><p>发送消息</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">./kafka-console-producer.sh --broker-list localhost:9092 --topic <span class="hljs-built_in">test</span> <span class="hljs-comment"># 创建了test的topic</span><br>&gt;nihao <span class="hljs-comment">#发送你好</span><br></code></pre></td></tr></table></figure><p>接收消息</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">/opt/kafka_2.13-2.6.0/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic <span class="hljs-built_in">test</span> --from-beginning <span class="hljs-comment"># 从头接受test的topic消息</span><br>&gt;nihao<br></code></pre></td></tr></table></figure><h2 id="本地测试"><a href="#本地测试" class="headerlink" title="本地测试"></a>本地测试</h2><p>创建SpringBoot项目</p><p>引入kafka依赖</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- https://mvnrepository.com/artifact/org.springframework.kafka/spring-kafka --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.kafka<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-kafka<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.7.6<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure><p>编写consumer类</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Consumer</span> </span>&#123;<br>    <span class="hljs-meta">@KafkaListener(topics = &#123;&quot;mq&quot;&#125;,groupId = &quot;0&quot;)</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">acceptMQ</span><span class="hljs-params">(String message)</span></span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;message:&quot;</span> + message);<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure><p>在测试类中添加如下代码</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Autowired</span><br><span class="hljs-keyword">private</span> KafkaTemplate&lt;String,String&gt; kafkaTemplate;<br><span class="hljs-meta">@Test</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">contextLoads</span><span class="hljs-params">()</span> </span>&#123;<br>    kafkaTemplate.send(<span class="hljs-string">&quot;mq&quot;</span>,<span class="hljs-string">&quot;haha&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure><p>启动项目，再运行测试类，即可看到结果,输出了haha</p>]]></content>
+      
+      
       <categories>
-        <category>教程</category>
-        <category>rabbitmq</category>
+          
+          <category> 教程 </category>
+          
       </categories>
-      <tags>
-        <tag>rabbitmq</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>阿里云docker部署kafka</title>
-    <url>/2021/09/11/%E9%98%BF%E9%87%8C%E4%BA%91docker%E9%83%A8%E7%BD%B2kafka/</url>
-    <content><![CDATA[<p><code>本文基础建立在有一台阿里云服务器，以及服务器已经安装了docker的基础上。</code></p>
-<p>被折磨了一段时间，本地始终访问不到阿里云docker里面的kafka，故写下记录,顺便吐槽一句，阿里云运行docker中的kafka时，不知道为什么kafka的内存占用非常高，搞得服务器都要宕机了(可能因为我用的免费的-.-)。 </p>
-<h2 id="docker命令"><a href="#docker命令" class="headerlink" title="docker命令"></a>docker命令</h2><p>详情可以看这篇文章<a href="https://zhoubh.xyz/2021/09/11/docker命令/" target="_blank">docker命令</a></p>
-<span id="more"></span>
-
-<h2 id="安装zookeeper和kafka"><a href="#安装zookeeper和kafka" class="headerlink" title="安装zookeeper和kafka"></a>安装zookeeper和kafka</h2><ol>
-<li>首先从仓库中下拉zookeeper和kafka的镜像</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">docker pull wurstmeister/kafka<br>docker pull wurstmeister/zookeeper<br></code></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>先运行zookeeper</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">docker run -d --name zookeeper -p 2181:2181 -t wurstmeister/zookeeper<br></code></pre></td></tr></table></figure>
-
-<p>指定2181端口给zookeeper，记住这个端口。</p>
-<ol start="3">
-<li>再运行kafka</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">docker run --name kafka \<br>-p 9092:9092 \ <span class="hljs-comment"># 指定端口开放</span><br>-e KAFKA_BROKER_ID=0 \<br>-e KAFKA_ZOOKEEPER_CONNECT=阿里云内网地址:2181 \ <span class="hljs-comment"># 阿里云内网地址</span><br>-e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://阿里云外网地址:9092 \ <span class="hljs-comment">#阿里云外网地址</span><br>-e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 \<br>-d  wurstmeister/kafka<br></code></pre></td></tr></table></figure>
-
-<h2 id="配置阿里云安全组"><a href="#配置阿里云安全组" class="headerlink" title="配置阿里云安全组"></a>配置阿里云安全组</h2><p>进入阿里云配置安全组</p>
-<p><img src="https://gitee.com/funny2/pic-repo/raw/master/img/image-20210911224744188.png" alt="image-20210911224744188"></p>
-<p>配置入方向的规则，开放zookeeper和kafka的端口</p>
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>进入kafka容器</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">docker <span class="hljs-built_in">exec</span> -it kafka bash<br></code></pre></td></tr></table></figure>
-
-<p>进入bin目录</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> /opt/kafka_2.13-2.6.0/bin/<br></code></pre></td></tr></table></figure>
-
-<p>发送消息</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">./kafka-console-producer.sh --broker-list localhost:9092 --topic <span class="hljs-built_in">test</span> <span class="hljs-comment"># 创建了test的topic</span><br>&gt;nihao <span class="hljs-comment">#发送你好</span><br></code></pre></td></tr></table></figure>
-
-<p>接收消息</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">/opt/kafka_2.13-2.6.0/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic <span class="hljs-built_in">test</span> --from-beginning <span class="hljs-comment"># 从头接受test的topic消息</span><br>&gt;nihao<br></code></pre></td></tr></table></figure>
-
-
-
-<h2 id="本地测试"><a href="#本地测试" class="headerlink" title="本地测试"></a>本地测试</h2><p>创建SpringBoot项目</p>
-<p>引入kafka依赖</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- https://mvnrepository.com/artifact/org.springframework.kafka/spring-kafka --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.kafka<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-kafka<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.7.6<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-<p>编写consumer类</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Consumer</span> </span>&#123;<br>    <span class="hljs-meta">@KafkaListener(topics = &#123;&quot;mq&quot;&#125;,groupId = &quot;0&quot;)</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">acceptMQ</span><span class="hljs-params">(String message)</span></span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;message:&quot;</span> + message);<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
-
-<p>在测试类中添加如下代码</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Autowired</span><br><span class="hljs-keyword">private</span> KafkaTemplate&lt;String,String&gt; kafkaTemplate;<br><span class="hljs-meta">@Test</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">contextLoads</span><span class="hljs-params">()</span> </span>&#123;<br>    kafkaTemplate.send(<span class="hljs-string">&quot;mq&quot;</span>,<span class="hljs-string">&quot;haha&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>启动项目，再运行测试类，即可看到结果,输出了haha</p>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+            <tag> 阿里云 </tag>
+            
+            <tag> kafka </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2021/08/28/abc/"/>
+      <url>/2021/08/28/abc/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p> <span id="more"></span><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;test&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p><p><a href="www.baidu.com">test</a></p>]]></content>
+      
+      
       <categories>
-        <category>教程</category>
+          
+          <category> life </category>
+          
       </categories>
-      <tags>
-        <tag>docker</tag>
-        <tag>阿里云</tag>
-        <tag>kafka</tag>
-      </tags>
-  </entry>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+            <tag> test </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
 </search>

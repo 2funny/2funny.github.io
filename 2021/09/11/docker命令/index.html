@@ -13,21 +13,18 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="本文主要介绍常用命令
-基础命令1234567docker version # 查看docker版本docker info # docker详细信息docker --help #查看docker容器帮助docker container ls # 查看所有容器docker stats # docker运行占用资源情况docker ps #查看正在运行的docker容器	-a #查看所有容器
-
-dock">
+  <meta name="description" content="本文主要介绍常用命令">
   <meta name="author" content="2funny">
   <meta name="keywords" content="Life,Code,Blog">
-  <meta name="description" content="本文主要介绍常用命令 基础命令1234567docker version # 查看docker版本docker info # docker详细信息docker --help #查看docker容器帮助docker container ls # 查看所有容器docker stats # docker运行占用资源情况docker ps #查看正在运行的docker容器	-a #查看所有容器  dock">
+  <meta name="description" content="本文主要介绍常用命令">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker命令">
 <meta property="og:url" content="https://zhoubh.xyz/2021/09/11/docker%E5%91%BD%E4%BB%A4/index.html">
 <meta property="og:site_name" content="funny">
-<meta property="og:description" content="本文主要介绍常用命令 基础命令1234567docker version # 查看docker版本docker info # docker详细信息docker --help #查看docker容器帮助docker container ls # 查看所有容器docker stats # docker运行占用资源情况docker ps #查看正在运行的docker容器	-a #查看所有容器  dock">
+<meta property="og:description" content="本文主要介绍常用命令">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-09-11T14:03:56.000Z">
-<meta property="article:modified_time" content="2021-09-11T15:32:55.353Z">
+<meta property="article:modified_time" content="2021-12-22T13:32:11.384Z">
 <meta property="article:author" content="2funny">
 <meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary_large_image">
@@ -215,6 +212,14 @@ dock">
 
   
   
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -242,12 +247,12 @@ dock">
             
             <div class="markdown-body">
               <p><code>本文主要介绍常用命令</code></p>
+ <span id="more"></span>
+
 <h2 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker version <span class="hljs-comment"># 查看docker版本</span><br>docker info <span class="hljs-comment"># docker详细信息</span><br>docker --<span class="hljs-built_in">help</span> <span class="hljs-comment">#查看docker容器帮助</span><br>docker container ls <span class="hljs-comment"># 查看所有容器</span><br>docker stats <span class="hljs-comment"># docker运行占用资源情况</span><br>docker ps <span class="hljs-comment">#查看正在运行的docker容器</span><br>	-a <span class="hljs-comment">#查看所有容器</span><br></code></pre></td></tr></table></figure>
 
 <p>docker ps -a示例</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><br><span class="hljs-comment"># docker ps -a</span><br>CONTAINER ID   IMAGE                    COMMAND                  CREATED        STATUS                        PORTS                                                NAMES<br>55b81d86e23c   wurstmeister/kafka       <span class="hljs-string">&quot;start-kafka.sh&quot;</span>         36 hours ago   Exited (255) 50 minutes ago   0.0.0.0:9092-&gt;9092/tcp                               kafka<br>902fa0db811e   wurstmeister/zookeeper   <span class="hljs-string">&quot;/bin/sh -c &#x27;/usr/sb…&quot;</span>   37 hours ago   Exited (255) 50 minutes ago   22/tcp, 2888/tcp, 3888/tcp, 0.0.0.0:2181-&gt;2181/tcp   zookeeper<br></code></pre></td></tr></table></figure>
-
- <span id="more"></span>
 
 
 
@@ -433,6 +438,8 @@ dock">
   
 
 
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
